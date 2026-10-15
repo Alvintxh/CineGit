@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "repo_id": "92e6697440bc4474b65446dc25d60086",
+  "commit_hash": "1d5feb2cb2c2e92842f5582c76d7cefb22a1d388c1636f542b61d81f9b1bb0eb",
+  "base_commit": "1d5feb2cb2c2e92842f5582c76d7cefb22a1d388c1636f542b61d81f9b1bb0eb",
+  "parent_commit": null,
+  "title": "雨夜来信",
+  "description": "一座失眠的城市，一封来自未来的信。三幕赛博电影短片。",
+  "author": "@cinegit_studio",
+  "license": "CC-BY-4.0",
+  "variables": {
+    "protagonist": "撑透明雨伞的机甲少女",
+    "environment": "暴雨中的未来霓虹都市"
+  },
+  "nodes": [
+    {
+      "node_id": "shot_01",
+      "title": "城市醒来之前",
+      "mcp_tool": "mcp_video_gen",
+      "prompt_template": "电影级远景，{{environment}}，高耸建筑间雾气流动，青绿色霓虹倒映在积水中，35mm film grain",
+      "params": {
+        "seed": 884210,
+        "camera_motion": "pan_right",
+        "duration": 3
+      },
+      "depends_on": []
+    },
+    {
+      "node_id": "shot_02",
+      "title": "一个未接来电",
+      "mcp_tool": "mcp_video_gen",
+      "prompt_template": "中景，{{protagonist}}独自站在{{environment}}的街口，风衣轻轻摆动，镜头缓缓推近，cinematic lighting",
+      "params": {
+        "seed": 102938,
+        "camera_motion": "zoom_in",
+        "duration": 3
+      },
+      "depends_on": []
+    },
+    {
+      "node_id": "shot_03",
+      "title": "向光而行",
+      "mcp_tool": "mcp_video_gen",
+      "prompt_template": "远景，{{protagonist}}走向{{environment}}的天际线，雨幕渐渐消散，月光穿过云层，anamorphic widescreen",
+      "params": {
+        "seed": 731902,
+        "camera_motion": "zoom_out",
+        "duration": 3
+      },
+      "depends_on": []
+    }
+  ]
+}

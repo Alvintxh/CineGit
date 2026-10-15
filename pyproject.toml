@@ -1,0 +1,22 @@
+[project]
+name = "cinegit"
+version = "0.1.0"
+description = "MCP creative workflow recorder and incremental video studio"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.115,<1",
+  "uvicorn>=0.30,<1",
+  "httpx>=0.27,<1",
+  "mcp>=1.20,<2",
+  "pillow>=11,<13",
+  "python-dotenv>=1,<2",
+  "filelock>=3.16,<4",
+]
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "pytest-asyncio>=0.24,<2"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+pythonpath = ["."]

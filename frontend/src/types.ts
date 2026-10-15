@@ -1,0 +1,11 @@
+export type Shot = { node_id: string; title: string; mcp_tool: string; prompt_template: string; params: { seed: number; duration: number; camera_motion: string; [key: string]: unknown }; depends_on: string[] }
+export type Workflow = { title: string; description: string; author: string; license: string; variables: Record<string, string>; nodes: Shot[] }
+export type Planned = Shot & { node_hash: string; resolved_prompt: string; cache_hit: boolean; artifact?: string; artifact_mp4?: string; preview_img?: string; fallback?: boolean; elapsed_ms?: number }
+export type Stats = { cache_hits: number; total_nodes: number; cache_hit_rate: number; rendered_nodes: number; elapsed_ms: number; estimated_saved_usd: number; concat_ms: number; video_url: string; duration: number; fallback_nodes: number }
+export type Commit = { hash: string; repo_id: string; parent_commit: string | null; branch: string; message: string; created_at: string; workflow: Workflow; nodes: Planned[]; stats: Stats }
+export type Job = { id: string; state: 'queued' | 'running' | 'success' | 'error' | 'conflict'; progress: number; total: number; error?: string; stats?: Stats; nodes: Planned[]; commit_hash?: string; message: string }
+export type Repo = { id: string; title: string; current_branch: string; branches: Record<string, string | null>; revision: number; workflow: Workflow; plan: Planned[]; head: string | null; commit: Commit | null; commits: Commit[]; dirty: boolean; jobs: Job[]; events: { id: string; action: string; created_at: string; details: Record<string, unknown> }[] }
+export type RepoSummary = Pick<Repo, 'id' | 'title' | 'current_branch'>
+export type Listing = { id: string; title: string; description: string; author: string; license: string; price: number; tags: string[]; forks: number; preview_img: string; video_url: string; duration: number; node_count: number }
+export type Change = { node_id: string; title: string; status: 'added' | 'removed' | 'modified' | 'unchanged'; before: Planned | null; after: Planned | null; fields: { field: string; before: unknown; after: unknown }[] }
+export type Diff = { left: Commit; right: Commit; changes: Change[]; changed_count: number }
